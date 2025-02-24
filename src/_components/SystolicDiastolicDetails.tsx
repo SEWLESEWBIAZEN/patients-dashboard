@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 import { Play } from 'lucide-react'
 import React from 'react'
 
-const SystolicDiastolicDetails = ({ className, title, data }: { className: string, title: string, data: { value: number, levels: string } }) => {
+const SystolicDiastolicDetails = ({ className, title, data }: { className: string, title: string, data?: { value: number, levels: string } }) => {
 
     return (
         <div className="flex flex-col items-start gap-[12px]">

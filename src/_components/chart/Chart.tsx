@@ -1,23 +1,12 @@
 "use client"
-
-import { TrendingUp } from "lucide-react"
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
-
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
 import {
     ChartConfig,
     ChartContainer,
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
-
+import { DiagnosisHistory } from "@/_lib/data/defnitions"
 
 const chartConfig = {
     systolic: {
@@ -30,13 +19,14 @@ const chartConfig = {
     },
 } satisfies ChartConfig
 
-export function Chart({ data }: { data: any[] }) {
-    const chartData = data?.map((da: any) => ({
+export function Chart({ data }: { data: DiagnosisHistory[] }) {
+    const chartData = data?.map((da: DiagnosisHistory) => ({
         month: da.month.slice(0, 3) + ", " + da.year,
         systolic: da.blood_pressure.systolic.value,
         diastolic: da.blood_pressure.diastolic.value
     }))
-
+    const maxValue = Math.max(...data.map((item) => item.blood_pressure.systolic.value));
+    const yAxisTicks = Array.from({ length: Math.ceil((maxValue - 60) / 20) + 1 }, (_, i) => 60 + i * 20);
     return (
         <div className="bg-transparent shadow-none border-0">
             <div className="w-full">
@@ -58,6 +48,8 @@ export function Chart({ data }: { data: any[] }) {
                             tickFormatter={(value) => value}
                         />
                         <YAxis
+                            domain={[60, maxValue]}
+                            ticks={yAxisTicks}
                             tickLine={true}
                             axisLine={true}
                             tickMargin={8}

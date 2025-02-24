@@ -4,9 +4,10 @@ import { Chart } from "./Chart";
 import SystolicDiastolicDetails from "../SystolicDiastolicDetails";
 import OtherDiagnosisResult from "../diagnosis/OtherDiagnosisResult";
 import DiagnosticListWrapper from "../diagnosis/DiagnosticListWrapper";
+import { Patient } from "@/_lib/data/defnitions";
 
 
-const ChartWrapper = ({ patientDetail }: { patientDetail: any }) => {
+const ChartWrapper = ({ patientDetail }: { patientDetail?: Patient }) => {
     return (
         <div className="w-2/3 flex flex-col gap-[32px] justify-start">
             <div className="w-full rounded-[16px] px-[20px] bg-[#FFFFFF]  mb-[10px] h-fit pb-[20px]">
@@ -21,7 +22,7 @@ const ChartWrapper = ({ patientDetail }: { patientDetail: any }) => {
                             </div>
                         </div>
                         <div className="w-full">
-                            <Chart data={patientDetail?.diagnosis_history?.slice(0, 6)} />
+                            <Chart data={patientDetail?.diagnosis_history.slice(0, 6).toReversed() ?? []} />
                         </div>
                     </div>
                     <div className="w-1/3">
@@ -44,7 +45,7 @@ const ChartWrapper = ({ patientDetail }: { patientDetail: any }) => {
                     <OtherDiagnosisResult className="bg-[#FFE6F1]" data={patientDetail?.diagnosis_history[0]?.heart_rate} imgUrl="/HeartBPM@2x.png" title="Heart Rate" />
                 </div>
             </div>
-            <DiagnosticListWrapper data={patientDetail.diagnostic_list ?? []} />
+            <DiagnosticListWrapper data={patientDetail?.diagnostic_list ?? []} />
         </div>
     )
 }

@@ -2,8 +2,10 @@ import Image from 'next/image'
 import React from 'react'
 import TopCard from '../common/TopCard'
 import { Calendar, Phone, ShieldCheck, Venus } from 'lucide-react'
+import { MinimalData } from '@/_lib/data/defnitions'
 
-const UserInfo = ({ data }: { data: any }) => {
+
+const UserInfo = ({ data }: { data: MinimalData }) => {
     const displayedData = [
         { icon: <Calendar />, title: 'Date Of Birth', value: new Date(data.date_of_birth).toDateString() },
         { icon: <Venus />, title: 'Gender', value: data.gender },
