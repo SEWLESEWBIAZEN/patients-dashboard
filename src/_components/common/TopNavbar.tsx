@@ -2,11 +2,11 @@
 import { Calendar, CreditCard, Ellipsis, House, MessageSquare, Settings, UsersRound } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import Profile from "./Profile";
+import Profile from "../patient/Profile";
 
 // navigation bar at the top of the navigation
 const TopNavbar = () => {
-    const [navLinks , setNavLinks] =useState<any[]>([
+    const [navLinks, setNavLinks] = useState<any[]>([
         { icon: <House />, name: "Overview", active: false },
         { icon: <UsersRound />, name: "Patients", active: true },
         { icon: <Calendar />, name: "Schedule", active: false },
@@ -28,11 +28,11 @@ const TopNavbar = () => {
                     )
                 })}
             </div>
-            <div className="flex flex-row items-center justify-between">                
+            <div className="flex flex-row items-center justify-between">
                 <Profile imgUrl="/senior-woman-doctor-and-portrait-smile-for-health-2023-11-27-05-18-16-utc@2x.png"
-                name="Dr. Jose Simmons" description="General Practitioner"/>
+                    name="Dr. Jose Simmons" description="General Practitioner" />
                 <div className="h-full border-[0.15px] border-[#707070] mx-4 opacity-5" />
-                <Settings className="text-[#072635]"/>
+                <Settings className="text-[#072635]" />
                 <Ellipsis className="rotate-90 text-[#072635]" />
             </div>
         </div>

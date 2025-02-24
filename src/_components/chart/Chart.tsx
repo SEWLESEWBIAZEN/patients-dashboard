@@ -17,14 +17,7 @@ import {
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
-const chartData = [
-    { month: "January", systolic: 186, diastolic: 80 },
-    { month: "February", systolic: 305, diastolic: 200 },
-    { month: "March", systolic: 237, diastolic: 120 },
-    { month: "April", systolic: 73, diastolic: 190 },
-    { month: "May", systolic: 209, diastolic: 130 },
-    { month: "June", systolic: 214, diastolic: 140 },
-]
+
 
 const chartConfig = {
     systolic: {
@@ -37,7 +30,13 @@ const chartConfig = {
     },
 } satisfies ChartConfig
 
-export function Chart() {
+export function Chart({ data }: { data: any[] }) {
+    const chartData = data?.map((da: any) => ({
+        month: da.month.slice(0, 3) + ", " + da.year,
+        systolic: da.blood_pressure.systolic.value,
+        diastolic: da.blood_pressure.diastolic.value
+    }))
+
     return (
         <div className="bg-transparent shadow-none border-0">
             <div className="w-full">
@@ -56,7 +55,7 @@ export function Chart() {
                             tickLine={true}
                             axisLine={true}
                             tickMargin={8}
-                            tickFormatter={(value) => value.slice(0, 3)}
+                            tickFormatter={(value) => value}
                         />
                         <YAxis
                             tickLine={true}

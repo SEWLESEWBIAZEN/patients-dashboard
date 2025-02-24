@@ -3,24 +3,21 @@
 @tailwind utilities;
 /* For WebKit Browsers (Chrome, Safari, Edge) */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 12px; /* Set scrollbar width */
+  width: 6px; /* Set scrollbar width */
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Track background */ 
-  
+  background: #f1f1f1; /* Track background */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background:#072635; /* Scrollbar handle color */
+  background: #072635; /* Scrollbar handle color */
   border-radius: 50px; /* Rounded scrollbar */
- 
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #E3E4E6; /* Darker color on hover */
+  background: #e3e4e6; /* Darker color on hover */
 }
-
 
 @layer base {
   :root {
@@ -79,10 +76,6 @@
   }
 }
 
-
-
-
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -91,5 +84,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-
